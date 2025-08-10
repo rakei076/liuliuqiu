@@ -1,6 +1,4 @@
-import hashlib
-import time
-import xml.etree.ElementTree as ET
+import hashlib, time, xml.etree.ElementTree as ET
 from typing import Dict
 
 def check_signature(token: str, signature: str, timestamp: str, nonce: str) -> bool:
@@ -22,9 +20,9 @@ def parse_xml_message(xml_bytes: bytes) -> Dict[str, str]:
 def build_text_reply(to_user: str, from_user: str, content: str) -> str:
     now = int(time.time())
     return f"""<xml>
-    <ToUserName><![CDATA[{to_user}]]></ToUserName>
-    <FromUserName><![CDATA[{from_user}]]></FromUserName>
-    <CreateTime>{now}</CreateTime>
-    <MsgType><![CDATA[text]]></MsgType>
-    <Content><![CDATA[{content}]]></Content>
+<ToUserName><![CDATA[{to_user}]]></ToUserName>
+<FromUserName><![CDATA[{from_user}]]></FromUserName>
+<CreateTime>{now}</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[{content}]]></Content>
 </xml>"""
